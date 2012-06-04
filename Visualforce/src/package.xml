@@ -42,13 +42,17 @@
     </types>
     <types>
         <members>DetailComponentJS</members>
+        <members>DetailComponentJSMin</members>
         <members>ListComponentJS</members>
+        <members>ListComponentJSMin</members>
         <members>MobileVisualforceSDKImages</members>
         <members>MobileVisualforceSDKcss</members>
         <members>MobileVisualforceSDKjs</members>
         <members>MobileVisualforceSDKjsMin</members>
         <members>NavComponentJS</members>
+        <members>NavComponentJSMin</members>
         <members>PageComponentJS</members>
+        <members>PageComponentJSMin</members>
         <members>jqm11css</members>
         <members>jqm11js</members>
         <members>jqm11jsMin</members>
