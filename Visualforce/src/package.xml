@@ -9,8 +9,8 @@
         <members>DetailController</members>
         <members>FooterController</members>
         <members>HeaderController</members>
+        <members>JqmRecordDmlController</members>
         <members>ListController</members>
-        <members>ThumbnailListController</members>
         <members>NavController</members>
         <members>PageController</members>
         <members>RemoteRequest</members>
@@ -22,6 +22,7 @@
         <members>SObjectResponse</members>
         <members>SchemaManager</members>
         <members>TestClass</members>
+        <members>ThumbnailListController</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -30,22 +31,25 @@
         <members>Detail</members>
         <members>Footer</members>
         <members>Header</members>
+        <members>JqmRecordDml</members>
         <members>List</members>
-        <members>ThumbnailList</members>
         <members>Nav</members>
         <members>Page</members>
+        <members>ThumbnailList</members>
         <name>ApexComponent</name>
     </types>
     <types>
+        <members>LeadEntryMC</members>
         <members>MobilePage</members>
-        <members>ThumbnailList</members>
         <members>MobilePageWithComponents</members>
         <members>SplitViewTemplate</members>
+        <members>ThumbnailList</members>
         <name>ApexPage</name>
     </types>
     <types>
         <members>DetailComponentJS</members>
         <members>DetailComponentJSMin</members>
+        <members>ICanHaz</members>
         <members>ListComponentJS</members>
         <members>ListComponentJSMin</members>
         <members>MobileVisualforceSDKImages</members>
@@ -62,7 +66,6 @@
         <members>jqmSVcss</members>
         <members>jqmSVjs</members>
         <members>jqmSVjsMin</members>
-        <members>ICanHaz</members>
         <name>StaticResource</name>
     </types>
     <version>23.0</version>

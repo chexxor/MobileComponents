@@ -1,0 +1,48 @@
+<apex:component controller="JqmRecordDmlController" layout="none">
+    <apex:attribute name="operation" type="String" required="true" default="" description="The type of DML operation. [insert|update|delete]" assignTo="{!config.operation}"/>
+    <apex:attribute name="sobjectType" type="String" required="true" default="" description="The API name of the Sobject on which to operate. e.g. Lead, MyObject__c" assignTo="{!config.sobjectType}"/>
+
+    <form id="jqmForm" data-ajax="false" onSubmit="onJqmFormSubmit(this); return false;">
+        <p id="formResults"></p>
+        <apex:componentBody />
+    </form>
+    
+	<script>
+	    //TODO: Define this on $V to keep clutter out of global namespace.
+        function onJqmFormSubmit(that) {
+            $.mobile.showPageLoadingMsg("b", "Calculating...", false);
+            
+            //Gather all form inputs with JavaScript into a form values map.
+            var formFieldNameToValueMap = {};
+            formFieldNameToValueMap['sobjectType'] = '{!sobjectType}';
+            $(that).find('input').each(function() {
+                if ($(this).attr('name') !== 'submit')
+                    formFieldNameToValueMap[$(this).attr('name')] = $(this).attr('value');
+            });
+            $V.App.log.debug("Sending these fields to server handler: ", formFieldNameToValueMap);
+            //$.mobile.hidePageLoadingMsg();
+            
+            //Send the form values map to the server handler.
+            //TODO: Turn this specific method call a generic method call.
+            JqmRecordDmlController.performOperation(formFieldNameToValueMap, function(result, event) {
+                $V.App.log.debug("Event: ", event);
+                $V.App.log.debug("Result: ", result);
+                if (event.status === false) {//Failure
+                    $("#formResults").html(event.message);
+                }
+                else {//Success
+                    //TODO: Do success stuff here.
+                    $("#formResults").html('Record created: ' + result.Id);
+                }
+                
+                $.mobile.hidePageLoadingMsg();
+                return false;
+            });
+        }
+    </script>
+    <style>
+        p#formResults {
+            color: white;
+        }
+    </style>
+</apex:component>

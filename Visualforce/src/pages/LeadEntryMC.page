@@ -1,0 +1,117 @@
+<apex:page showHeader="false"  standardStylesheets="false" cache="false" doctype="html-5.0">
+<c:App debug="true">
+    <c:Page name="list"
+            theme="touch"
+            debug="true">
+        <c:Header >
+            <h1 style="font-size: 20px; margin: 0px;">All Leads</h1>
+        </c:Header>
+        <c:Content >
+            <c:List sobject="Lead"
+                    labelField="Name"
+                    subLabelField="Phone"
+                    sortByField="Name"
+                    listFilter="true"
+                    filter="recent"
+                    nextPage="#leadDetail"
+                    debug="true"/>
+        </c:Content>
+    </c:Page>
+    <c:Page name="leadDetail"
+            theme="touch"
+            back="true"
+            debug="true">
+        <c:Header >
+            <h1 style="font-size: 20px; margin: 0px;">New Lead</h1>
+        </c:Header>
+        <c:Content >
+            <c:Detail sobject="Lead"
+                          debug="true"/>
+            <c:jqmRecordDml operation="insert" sobjectType="Lead">
+                <!--
+                <c:jqmTextInput value="FirstName" label="First Name:"/>
+                <c:jqmTextInput value="LastName" label="Last Name:"/>
+                <c:jqmSearch value="Search Input" label="Search Input"/>
+                <c:jqmSubmit value="Create" label="Create"/>
+                -->
+                <div data-role="fieldcontain">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" name="firstName" id="firstName" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" name="lastName" id="lastName" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="company">Company:</label>
+                    <input type="text" name="company" id="company" value=""/>
+                </div>
+                <div>
+                    <button type="submit" name="submit" value="submit">Submit</button>
+                </div>
+            </c:jqmRecordDml>
+            <!--
+            <form id="jqmForm" data-ajax="false" onSubmit="onJqmFormSubmit(this); return false;">
+                <div data-role="fieldcontain">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" name="firstName" id="firstName" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" name="lastName" id="lastName" value=""/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="search">Search Input:</label>
+                    <input type="search" name="password" id="search"/>
+                </div>
+                <div>
+                    <label for="search">Search Input:</label>
+                    <input type="submit" name="password" id="search" data-=""/>
+                </div>
+                
+                <script>
+                    function onJqmFormSubmit(that) {
+                        $.mobile.showPageLoadingMsg("b", "Calculating...", false);
+                        
+                        //Gather all form inputs with JavaScript into a form values map.
+                        var formFieldNameToValueMap = {};
+                        $(that).find('input').each(function() {
+                            if ($(this).attr('name') !== 'submit')
+                                formFieldNameToValueMap[$(this).attr('name')] = $(this).attr('value');
+                        });
+                        $V.App.log.debug("formFieldNameToValueMap: ", formFieldNameToValueMap);
+                        $.mobile.hidePageLoadingMsg();
+                        return false;
+                        //Send form values map to server handler.
+                        //TODO: Turn this specific method call a generic method call.
+                        /*
+                        MyMobileAppController.calculate(formFieldNameToValueMap, function(result, event) {
+                            $('#roiResult').find('input').each((function(result) {
+                                    return function() {
+                                        $(this).attr('value', result[$(this).attr('name')]);
+                                    };
+                                })(result)
+                            );
+                            $.mobile.hidePageLoadingMsg();
+                            return false;
+                        });
+                        */
+                    }
+                </script>
+            </form>
+            -->
+        </c:Content>
+    </c:Page>
+</c:App>
+<style>
+    [data-role="panel"][data-id="main"] [data-role="page"].ui-page .ui-content {
+        background: white;
+    }
+    .ui-body-touch, .ui-overlay-touch {
+        font-family: Helvetica, Arial, sans-serif
+    }
+    label.ui-input-text {
+        color: white;
+    }
+</style>
+</apex:page>
