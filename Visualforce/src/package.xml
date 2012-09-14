@@ -43,6 +43,7 @@
         <members>MobilePage</members>
         <members>MobilePageWithComponents</members>
         <members>SplitViewTemplate</members>
+        <members>TestMobileComponents</members>
         <members>ThumbnailList</members>
         <name>ApexPage</name>
     </types>
@@ -50,6 +51,7 @@
         <members>DetailComponentJS</members>
         <members>DetailComponentJSMin</members>
         <members>ICanHaz</members>
+        <members>JqmRecordDmlComponentJS</members>
         <members>ListComponentJS</members>
         <members>ListComponentJSMin</members>
         <members>MobileVisualforceSDKImages</members>

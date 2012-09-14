@@ -13,11 +13,11 @@
                     sortByField="Name"
                     listFilter="true"
                     filter="recent"
-                    nextPage="#leadDetail"
+                    nextPage="#leadEdit"
                     debug="true"/>
         </c:Content>
     </c:Page>
-    <c:Page name="leadDetail"
+    <c:Page name="leadEdit"
             theme="touch"
             back="true"
             debug="true">
@@ -25,9 +25,11 @@
             <h1 style="font-size: 20px; margin: 0px;">New Lead</h1>
         </c:Header>
         <c:Content >
+            <!--
             <c:Detail sobject="Lead"
                           debug="true"/>
-            <c:jqmRecordDml operation="insert" sobjectType="Lead">
+            -->
+            <c:JqmRecordDml operation="insert" sobjectType="Lead" debug="true">
                 <!--
                 <c:jqmTextInput value="FirstName" label="First Name:"/>
                 <c:jqmTextInput value="LastName" label="Last Name:"/>
@@ -49,57 +51,7 @@
                 <div>
                     <button type="submit" name="submit" value="submit">Submit</button>
                 </div>
-            </c:jqmRecordDml>
-            <!--
-            <form id="jqmForm" data-ajax="false" onSubmit="onJqmFormSubmit(this); return false;">
-                <div data-role="fieldcontain">
-                    <label for="firstName">First Name:</label>
-                    <input type="text" name="firstName" id="firstName" value=""/>
-                </div>
-                <div data-role="fieldcontain">
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" name="lastName" id="lastName" value=""/>
-                </div>
-                <div data-role="fieldcontain">
-                    <label for="search">Search Input:</label>
-                    <input type="search" name="password" id="search"/>
-                </div>
-                <div>
-                    <label for="search">Search Input:</label>
-                    <input type="submit" name="password" id="search" data-=""/>
-                </div>
-                
-                <script>
-                    function onJqmFormSubmit(that) {
-                        $.mobile.showPageLoadingMsg("b", "Calculating...", false);
-                        
-                        //Gather all form inputs with JavaScript into a form values map.
-                        var formFieldNameToValueMap = {};
-                        $(that).find('input').each(function() {
-                            if ($(this).attr('name') !== 'submit')
-                                formFieldNameToValueMap[$(this).attr('name')] = $(this).attr('value');
-                        });
-                        $V.App.log.debug("formFieldNameToValueMap: ", formFieldNameToValueMap);
-                        $.mobile.hidePageLoadingMsg();
-                        return false;
-                        //Send form values map to server handler.
-                        //TODO: Turn this specific method call a generic method call.
-                        /*
-                        MyMobileAppController.calculate(formFieldNameToValueMap, function(result, event) {
-                            $('#roiResult').find('input').each((function(result) {
-                                    return function() {
-                                        $(this).attr('value', result[$(this).attr('name')]);
-                                    };
-                                })(result)
-                            );
-                            $.mobile.hidePageLoadingMsg();
-                            return false;
-                        });
-                        */
-                    }
-                </script>
-            </form>
-            -->
+            </c:JqmRecordDml>
         </c:Content>
     </c:Page>
 </c:App>

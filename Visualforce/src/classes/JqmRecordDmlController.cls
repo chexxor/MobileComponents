@@ -1,5 +1,6 @@
 public class JqmRecordDmlController {
 
+    private final static String JQM_RECORD_DML_JS = 'JqmRecordDmlComponentJS';
     public JqmRecordDmlConfig config {get; set;}
 
     // Parameter object to pass between JS controller and server controller.
@@ -7,10 +8,22 @@ public class JqmRecordDmlController {
 
         public String operation {get; set;}
         public String sobjectType {get; set;}
+        public String jsCtlrName {get; set;}
+        public Boolean debug {get; set;}
     }
 
     public JqmRecordDmlController() {
         this.config = new JqmRecordDmlConfig();
+    }
+    
+    public virtual String getConfigAsJson() {
+        String configStr = JSON.serialize(this.config);
+        System.debug(configStr);
+        return configStr;
+    }
+    
+    public String getJqmRecordDmlComponentJS() {
+        return this.config.debug ? JQM_RECORD_DML_JS : (JQM_RECORD_DML_JS + 'Min');
     }
     
     @RemoteAction
